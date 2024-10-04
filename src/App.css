@@ -1,38 +1,70 @@
-.App {
-  text-align: center;
+.project { 
+  flex: 1;
+  flex-direction: row;
+  padding: 4em;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.project-name { 
+  font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.stage { 
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding-top: 2em;
+  flex-direction: row;
+  flex: 1;
 }
 
-.App-link {
-  color: #61dafb;
+.stage-item { 
+  min-width: 250px;
+  height: 600px;
+  margin-right: 1em;
+  border-radius: 1em;
+  background-color: rgb(247, 246, 246);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.stage-title { 
+  font-weight: 700;
+  background-color: rgb(201, 201, 201);
+  height: 30px;
+  padding: 1em;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.case-card  {
+  background-color: white;
+  width: 300px;
+  height: 70px;
+  margin: 0.5em;
+  border-radius: 0.5em;
+  flex: 1;
+  justify-content: flex-start;
+}
+
+.case-title { 
+  font-size: 16px;
+  padding: 0.25em;
+}
+
+.progress-bar {
+  width: 290px;
+  height: 6px;
+  background-color: #d6d6d6;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  margin-left: 0.25em;
+  margin-right: 0.25em;
+}
+
+/* Progress fill */
+.progress-bar::before {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 50%; /* Adjust this value to reflect progress (e.g., 50%) */
+  background-color: #0c001e;
+  transition: width 0.3s ease;
+  border-radius: 2px 0 0 2px;
 }

@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import * as React from 'react';
 import './App.css';
+import { Project } from './components/Project';
+import Client from './api/client';
 
-function App() {
+
+type Input = { 
+  client: Client
+}; 
+
+function App({ client }: Input) {
+
+  const [project, setProject] = React.useState<any>(null); 
+
+  async function getProject() { 
+    const projects = await client.getProjects()
+    console.log({ projects })
+
+    setProject(projects[0]);
+  }
+
+  React.useEffect(() => {
+    getProject()
+  }, [])
+
+  if (!project) return null;
+  
+  console.log({ project })
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Project name={project.name} stages={project.stages} />
     </div>
   );
 }
