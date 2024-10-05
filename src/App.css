@@ -68,3 +68,49 @@
   transition: width 0.3s ease;
   border-radius: 2px 0 0 2px;
 }
+
+
+.add-card button { 
+  width: 2em;
+  height: 2em;
+  font-size: 16px;
+}
+
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+button {
+  margin: 5px;
+}
+
+
+.add-new-case { 
+  background-color: rgb(213, 211, 211);
+  width: 300px;
+  height: 30px;
+  margin: 0.5em;
+  border-radius: 0.5em;
+  flex: 1;
+  border: 0;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 700;
+  padding-left: 1em;
+}

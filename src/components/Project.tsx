@@ -3,6 +3,7 @@ import Stage from './Stage';
 
 import { DndContext } from '@dnd-kit/core';
 import Client from '../api/client';
+import Modal from './Modal';
 
 type ProjectProps = {
   client: Client
@@ -10,7 +11,7 @@ type ProjectProps = {
 
 export function Project(input: ProjectProps) {
   const [project, setProject] = React.useState<any>(null);
-
+  const [addStageModalOpen, setAddStageModalOpen] = React.useState(false);
   async function getProject() {
     const projects = await input.client.getProjects()
     setProject(projects[0]);
@@ -29,14 +30,38 @@ export function Project(input: ProjectProps) {
     await getProject()
   }
 
+  async function addCase(name: string) {
+    const [stage] = project.stages;
+    await input.client.createCase(project.id, stage.id, name);
+    await getProject();
+  }
+
+  async function addStage(name: string) {
+    await input.client.addStageToProject(project.id, name);
+    await getProject();
+  }
+
   return (
     <DndContext onDragEnd={handleDragOver}>
+      <Modal label='Add stage' show={addStageModalOpen} handleClose={() => setAddStageModalOpen(false)} handleSubmit={addStage} />
       <div className='project'>
         <span className='project-name'>{project.name}</span>
         <div className='stage'>
           {project.stages.map((stage: any, index: number) => (
-            <Stage index={index} key={stage.id} name={stage.name} id={stage.id} cases={stage.cases} />
+            <Stage
+              addCase={addCase}
+              client={input.client}
+              index={index}
+              key={stage.id}
+              name={stage.name}
+              id={stage.id}
+              cases={stage.cases}
+            />
           ))}
+
+          <div className='add-card'>
+            <button onClick={() => setAddStageModalOpen(true)}>+</button>
+          </div>
         </div>
       </div>
     </DndContext>

@@ -6,7 +6,7 @@ export default class Client {
   projects = []
 
   async changeStageOfCase(record: any, nextStageId: number, projectId: string) {
-    await axios.put(`${this.API_URL}/projects/${projectId}/cases/${record.id}/move`, { 
+    await axios.put(`${this.API_URL}/projects/${projectId}/cases/${record.id}/move`, {
       stageId: nextStageId
     })
   }
@@ -15,5 +15,18 @@ export default class Client {
     const respose = await axios.get(`${this.API_URL}/projects`)
     this.projects = respose.data;
     return respose.data;
+  }
+
+  async addStageToProject(projectId: string, name: string) {
+    await axios.post(`${this.API_URL}/projects/${projectId}/stages`, {
+      name
+    })
+  }
+
+  async createCase(projectId: string, stageId: string, name: string) {
+    await axios.post(`${this.API_URL}/projects/${projectId}/stages/${stageId}/cases`, {
+      name,
+      description: "",
+    })
   }
 }
