@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Client from './api/client';
+import AxiosClient from './api/AxiosClient';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
 
-const client = new Client()
+const client = new AxiosClient()
 
 root.render(
   <React.StrictMode>

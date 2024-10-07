@@ -5,9 +5,10 @@ interface ModalProps {
   handleClose: () => void;
   handleSubmit: (inputValue: string) => void;
   label?: string;
+  modalTestId: string;
 }
 
-const Modal: React.FC<ModalProps> = ({ show, handleClose, handleSubmit, label }) => {
+const Modal: React.FC<ModalProps> = ({ show, handleClose, handleSubmit, label, modalTestId }) => {
   const [inputValue, setInputValue] = useState('');
 
   if (!show) {
@@ -21,7 +22,7 @@ const Modal: React.FC<ModalProps> = ({ show, handleClose, handleSubmit, label })
   };
 
   return (
-    <div className="modal-backdrop">
+    <div data-testid={modalTestId} className="modal-backdrop">
       <div className="modal-content">
         <h2>{label}</h2>
         <input

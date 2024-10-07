@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import { Project } from './components/Project';
-import Client from './api/client';
+import Client from './api/client.interface';
 
 type Input = {
   client: Client

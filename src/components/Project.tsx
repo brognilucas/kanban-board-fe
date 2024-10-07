@@ -2,8 +2,9 @@ import * as React from 'react';
 import Stage from './Stage';
 
 import { DndContext } from '@dnd-kit/core';
-import Client from '../api/client';
 import Modal from './Modal';
+import AddStageButton from './AddStageButton';
+import Client from '../api/client.interface';
 
 type ProjectProps = {
   client: Client
@@ -43,7 +44,7 @@ export function Project(input: ProjectProps) {
 
   return (
     <DndContext onDragEnd={handleDragOver}>
-      <Modal label='Add stage' show={addStageModalOpen} handleClose={() => setAddStageModalOpen(false)} handleSubmit={addStage} />
+      <Modal modalTestId='add-stage-modal' label='Add stage' show={addStageModalOpen} handleClose={() => setAddStageModalOpen(false)} handleSubmit={addStage} />
       <div className='project'>
         <span className='project-name'>{project.name}</span>
         <div className='stage'>
@@ -58,10 +59,7 @@ export function Project(input: ProjectProps) {
               cases={stage.cases}
             />
           ))}
-
-          <div className='add-card'>
-            <button onClick={() => setAddStageModalOpen(true)}>+</button>
-          </div>
+          <AddStageButton onClick={() => setAddStageModalOpen(true)} />
         </div>
       </div>
     </DndContext>

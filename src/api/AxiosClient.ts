@@ -1,11 +1,12 @@
 import axios from "axios";
+import Client from "./client.interface";
 
-export default class Client {
+export default class AxiosClient implements Client {
   private API_URL = 'http://localhost:3000/api';
 
   projects = []
 
-  async changeStageOfCase(record: any, nextStageId: number, projectId: string) {
+  async changeStageOfCase(record: any, nextStageId: string, projectId: string) {
     await axios.put(`${this.API_URL}/projects/${projectId}/cases/${record.id}/move`, {
       stageId: nextStageId
     })
