@@ -1,3 +1,8 @@
+body { 
+  height: 100%;
+  width: 100%;
+}
+
 .project { 
   flex: 1;
   flex-direction: row;
@@ -16,7 +21,7 @@
 }
 
 .stage-item { 
-  min-width: 250px;
+  min-width: 350px;
   height: 600px;
   margin-right: 1em;
   border-radius: 1em;
@@ -34,9 +39,9 @@
 
 .case-card  {
   background-color: white;
-  width: 300px;
+  width: 90%;
   height: 70px;
-  margin: 0.5em;
+  margin: 1em;
   border-radius: 0.5em;
   flex: 1;
   justify-content: flex-start;
@@ -103,9 +108,9 @@ button {
 
 .add-new-case { 
   background-color: rgb(213, 211, 211);
-  width: 300px;
+  width: 320px;
   height: 30px;
-  margin: 0.5em;
+  margin: 1em;
   border-radius: 0.5em;
   flex: 1;
   border: 0;

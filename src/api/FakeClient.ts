@@ -18,15 +18,15 @@ export default class FakeClient implements Client {
       throw new Error(`Project with ID ${projectId} not found`);
     }
 
-    const currentStage = project.stages?.find(s => s.id === record.stageId);
-    const nextStage = project.stages?.find(s => s.id === nextStageId);
-    const caseItem = currentStage?.cases?.find(c => c.id === record.id);
+    const currentStage = project.stages?.find((s: any) => s.id === record.stageId);
+    const nextStage = project.stages?.find((s: any) => s.id === nextStageId);
+    const caseItem = currentStage?.cases?.find((c: any) => c.id === record.id);
 
     if (!caseItem || !nextStage) {
       throw new Error('Case or next stage not found');
     }
 
-    currentStage.cases = currentStage.cases?.filter(c => c.id !== caseItem.id);
+    currentStage.cases = currentStage.cases?.filter((c: any) => c.id !== caseItem.id);
 
     nextStage.cases = nextStage.cases || [];
     nextStage.cases.push({ ...caseItem, stageId: nextStageId });
@@ -65,7 +65,7 @@ export default class FakeClient implements Client {
       throw new Error(`Project with ID ${projectId} not found`);
     }
 
-    const stage = project.stages?.find(s => s.id === stageId);
+    const stage = project.stages?.find((s: any) => s.id === stageId);
     if (!stage) {
       throw new Error(`Stage with ID ${stageId} not found`);
     }
